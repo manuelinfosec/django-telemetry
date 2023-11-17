@@ -10,11 +10,8 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 import os
 from typing import Union
 
-import dotenv
 from django.core.wsgi import get_wsgi_application
 
-# Load environment variables from `.env` file
-dotenv.load_dotenv()
 
 # Collect the current environment (development | production)
 environment: Union[str, None] = os.environ.get("ENV")
