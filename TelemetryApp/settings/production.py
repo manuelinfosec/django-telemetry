@@ -1,2 +1,3 @@
-# Load default settings
-from .settings import *
+"""Settings for use in production"""
+
+from TelemetryApp.settings.settings import *

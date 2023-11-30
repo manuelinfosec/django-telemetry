@@ -5,6 +5,7 @@ import sys
 from typing import Union
 
 import dotenv
+from opentelemetry.instrumentation.django import DjangoInstrumentor
 
 # Load environment variables from `.env` file
 dotenv.load_dotenv()
@@ -27,6 +28,9 @@ def main():
         )
     else:
         raise EnvironmentError("Could not detect environment from .env file.")
+
+    # This call is what makes the Django application to be instrumented
+    DjangoInstrumentor().instrument()
 
     try:
         from django.core.management import execute_from_command_line

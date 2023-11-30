@@ -28,9 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+# Current environment
+ENVIRONMENT: str = os.environ.get("ENV") or "development"
+
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -73,6 +75,7 @@ WSGI_APPLICATION = "TelemetryApp.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",  # Using PostgreSQL for data layer
@@ -83,7 +86,8 @@ DATABASES = {
         "PORT": 5432,  # Default Postgres port
         "POOL_SETTINGS": {
             "pool_size": 5,  # Number of connections to keep in the pool
-            "max_overflow": 10,  # Maximum number of connections that can be created beyond the pool size
+            # Maximum number of connections that can be created beyond the pool size
+            "max_overflow": 10,
             "recycle": 300,  # Number of seconds a connection can stay idle before it's closed
         },
     }
